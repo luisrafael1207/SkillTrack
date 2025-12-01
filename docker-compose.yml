@@ -54,11 +54,11 @@ services:
     image: ghcr.io/noipcom/noip-duc:3.3.0
     container_name: noip-duc
     restart: always
-    environment:
-      NOIP_USERNAME: "${NOIP_USERNAME}"
-      NOIP_PASSWORD: "${NOIP_PASSWORD}"
-      NOIP_HOSTNAMES: "${NOIP_HOSTNAMES}"
-      NOIP_INTERVAL: "300"
+    command:
+      - "--username=${NOIP_USERNAME}"
+      - "--password=${NOIP_PASSWORD}"
+      - "--hostnames=${NOIP_HOSTNAMES}"
+      - "--check-interval=300sec"
 
 volumes:
   mysql_data:
